@@ -1,0 +1,82 @@
+div.span4.well
+    h2.row-fluid.text-center New Sighting:
+    form.row-fluid(novalidate, enctype="multipart/form-data", ng-submit="addNewKaiju()")
+        div.row-fluid
+            label.pull-left.span4(for="name") Name &nbsp;
+            input.pull-right.span8( type="text", id="name" ng-model="newKaiju.name", placeholder="Code Name")
+        div.row-fluid
+            label.pull-left.span4(for="discovered") Discovered &nbsp;
+            div.pull-right.input-prepend.span8
+                span.add-on
+                    i.icon-calendar
+                input.span10( type="text", id="discovered", datepicker-popup="dd-MMMM-yyyy", ng-model="newKaiju.discovered")
+        div.row-fluid
+            label.pull-left.span4(for="height") Height &nbsp;
+            div.input-prepend.input-append.span8
+                span.add-on
+                    i.icon-resize-vertical
+                input.span8( type="number", min="0", id="height", ng-model="newKaiju.height")
+                span.add-on M
+        hr
+        div.row-fluid
+            label.text-center.span12(for="strength") Strength ({{newKaiju.strength}}) : {{newKaiju.strength | class}}
+            input.span12(type="range" id="strength" min="-1" max="100", ng-model="newKaiju.strength")
+            div.progress.progress-striped
+                div.bar(style="width:{{newKaiju.strength}}%", class="bar-{{newKaiju.strength | barLevel}}")
+
+        div.row-fluid
+            label.text-center.span12(for="speed") Speed ({{newKaiju.speed}}) : {{newKaiju.speed | class}}
+            input.span12(type="range" id="speed" min="-1" max="100", ng-model="newKaiju.speed")
+            div.progress.progress-striped
+                div.bar(style="width:{{newKaiju.speed}}%", class="bar-{{newKaiju.speed | barLevel}}")
+
+        div.row-fluid
+            label.text-center.span12(for="energy") Energy ({{newKaiju.energy}}) : {{newKaiju.energy | class}}
+            input.span12(type="range" id="energy" min="-1" max="100", ng-model="newKaiju.energy")
+            div.progress.progress-striped
+                div.bar(style="width:{{newKaiju.energy}}%", class="bar-{{newKaiju.energy | barLevel}}")
+
+        hr
+        div.row-fluid
+            label.text-center.span12(for="sightings") Sightings
+            div.input-prepend.input-append.span12
+                span.add-on
+                    i.icon-calendar
+                input.span9( type="text", id="sightings", datepicker-popup="dd-MMMM-yyyy", ng-model="sighting", ng-init="sighting=null")
+                button.btn(ng-click="addSighting($event)")
+                    i.icon-plus
+        div.row-fluid
+            div.well(ng-class=" {'hidden': noAppearances} ")
+                div.row-fluid(ng-repeat="date in newKaiju.appearances")
+                    div.pull-left {{date | date:'medium'}}
+                    button.btn.btn-mini.pull-right(ng-click="removeSighting($index, $event)")
+                        i.icon-minus
+        hr
+        div.row-fluid
+            label.text-center.span12(for="image") Images &nbsp;
+            div.span12
+                input.span12.fileUpload(type="file", name="thumbnail", accept="image/*", ng-file-select="addFile($event, $files, 'image')")
+
+        div.row-fluid
+            div.well(ng-class=" {'hidden': noimage} ")
+                div.row-fluid(ng-repeat="image in newKaiju.images")
+                    div.pull-left {{image}}
+                    button.btn.btn-mini.pull-right(ng-click="removeImage($index, $event)")
+                        i.icon-minus
+         hr
+        div.row-fluid
+            label.text-center.span12(for="svg") SVG &nbsp;
+            div.span12
+                input.span12.fileUpload(type="file", name="svg", accept="image/*", ng-file-select="addFile($event, $files, 'svg')")
+
+        div.row-fluid
+            div.well(ng-class=" {'hidden': nosvg} ")
+                div.pull-left {{newKaiju.svg}}
+                button.btn.btn-mini.pull-right(ng-click="removeSVG($event)")
+                    i.icon-minus
+        hr
+        div.row-fluid
+            label.text-center.span12(for="sightings") Description
+            textarea.span12( ng-model="newKaiju.description", placeholder="Description")
+        br
+        button.btn.btn-primary(type="submit") Add Kaiju

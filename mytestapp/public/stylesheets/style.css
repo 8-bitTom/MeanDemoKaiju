@@ -1,0 +1,56 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.hidden{
+    display : none;
+}
+
+.stacker{
+    margin-bottom: 0px !important;
+}
+
+.rel{
+    position: relative;
+}
+
+.abs{
+    position: absolute;
+}
+
+input[type="file"] {
+    /*visibility: hidden;*/
+    outline: none !important;
+}
+.fileUpload::-webkit-file-upload-button {
+    visibility: hidden;
+    outline: none !important;
+}
+.fileUpload:before {
+    content: 'select image';
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 2px 0px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    line-height: 1.5;
+    width: 99%;
+    text-align: center;
+}
+.fileUpload:hover:before {
+    border-color: black;
+}
+.fileUpload:active:before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}

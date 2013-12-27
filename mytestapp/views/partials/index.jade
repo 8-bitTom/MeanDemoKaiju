@@ -1,0 +1,58 @@
+div.container
+    h1.text-center.well Kaiju Databse
+    div.row-fluid
+        add-kaiju
+
+        div.span8.well(ng-class=" {'hidden' : noKaijus} ")
+            h2 Discovered:
+            div.well.well-small(ng-repeat="kaiju in kaijus")
+                div.row-fluid
+                    div.span3
+                        a(ng-href="{{'/kaiju/' + kaiju.name}}")
+                            img.img-rounded(ng-src="{{kaiju.images[0] | unknownImg}}")
+                    div.span4.well.well-small.stacker
+                        div.row-fluid
+                            h4{{kaiju.name}}
+                        div.row-fluid
+                            span{{kaiju.discovered | date:'MMM d, yyyy'}}
+                        div.row-fluid
+                            span Height : {{kaiju.height | height}}
+                    div.span5
+                        div.span4
+                            div.row-fluid.text-center
+                                h4 Speed
+                            div.row-fluid.text-center
+                                span.badge(class="badge-{{kaiju.speed | barLevel}}") {{kaiju.speed}}
+                        div.span4
+                            div.row-fluid.text-center
+                                h4 Strength
+                            div.row-fluid.text-center
+                                span.badge(class="badge-{{kaiju.strength | barLevel}}") {{kaiju.strength}}
+                        div.span4
+                            div.row-fluid.text-center
+                                h4 Energy
+                            div.row-fluid.text-center
+                                span.badge(class="badge-{{kaiju.energy | barLevel}}") {{kaiju.energy}}
+
+
+                    //div.span3.well.well-small.stacker
+                    //    div.row-fluid
+                    //        div.row-fluid.stacker Speed
+                    //        div.row-fluid.stacker
+                    //            div.progress.progress-striped.stacker
+                    //                div.bar.pull-right(style="width:{{kaiju.speed}}%", class="bar-{{kaiju.speed | barLevel}}")
+                    //    div.row-fluid
+                    //        div.row-fluid.stacker Strength
+                    //        div.row-fluid.stacker
+                    //            div.progress.progress-striped.stacker
+                    //                div.bar(style="width:{{kaiju.strength}}%", class="bar-{{kaiju.strength | barLevel}}")
+                    //    div.row-fluid
+                    //        div.row-fluid.stacker Energy
+                    //        div.row-fluid.stacker
+                    //            div.progress.progress-striped.stacker
+                    //                div.bar(style="width:{{kaiju.energy}}%", class="bar-{{kaiju.energy | barLevel}}")
+                    //div.span3.well.well-small.stacker
+                    //    div.row-fluid
+                    //        h4 Description
+                    //    div.row-fluid
+                    //        span{{kaiju.description | limitTo:10}}

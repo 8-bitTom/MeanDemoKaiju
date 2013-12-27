@@ -1,0 +1,45 @@
+div.container
+    h1.text-center.well
+        {{kaiju.name}}
+    div.row-fluid
+        div.span12.well
+            div.row-fluid
+                div.span3
+                    a(ng-href="{{'/kaiju/' + kaiju.name}}")
+                        img.img-rounded(ng-src="{{kaiju.images[0] | unknownImg}}")
+                div.span3.well.well-small.stacker
+                    div.row-fluid
+                        h4{{kaiju.name}}
+                    div.row-fluid
+                        span{{kaiju.discovered | date:'MMM d, yyyy'}}
+                    div.row-fluid
+                        span Height : {{kaiju.height | height}}
+                div.span3.well.well-small.stacker
+                    div.row-fluid
+                        div.row-fluid.stacker Speed
+                        div.row-fluid.stacker
+                            div.progress.progress-striped.stacker
+                                div.bar.pull-right(style="width:{{kaiju.speed}}%", class="bar-{{kaiju.speed | barLevel}}")
+                    div.row-fluid
+                        div.row-fluid.stacker Strength
+                        div.row-fluid.stacker
+                            div.progress.progress-striped.stacker
+                                div.bar(style="width:{{kaiju.strength}}%", class="bar-{{kaiju.strength | barLevel}}")
+                    div.row-fluid
+                        div.row-fluid.stacker Energy
+                        div.row-fluid.stacker
+                            div.progress.progress-striped.stacker
+                                div.bar(style="width:{{kaiju.energy}}%", class="bar-{{kaiju.energy | barLevel}}")
+                div.span3.well.well-small.stacker
+                    div.row-fluid
+                        h4 Description
+                    div.row-fluid
+                        span{{kaiju.description}}
+            div.row-fluid(ng-cloak)
+                div.span12
+                    svg(id="monster", ng-height="{{kaiju.height*2}}", width="900", height="0", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink")
+                        g(ng-transform="scale({{2}}) translate(0, 0)")
+                            line(ng-repeat="line in lines", ng-cloak, ng-x1="{{line.x1}}", ng-y1="{{line.y1}}", ng-x2="{{line.x2}}", ng-y2="{{line.y2}}", stroke="grey", stroke-width="2")
+
+                        g(ng-transform="scale({{kaiju.height*2}}) translate(0, 0)")
+                            image(height="1", width="1", ng-xlink="{{kaiju.svg}}", xlink:href="", y="0", x="0")

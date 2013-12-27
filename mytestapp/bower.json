@@ -1,0 +1,7 @@
+{
+  "name": "mytestApp",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "1.0.6"
+  }
+}

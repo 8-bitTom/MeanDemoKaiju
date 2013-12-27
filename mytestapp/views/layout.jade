@@ -1,0 +1,26 @@
+doctype 5
+html(ng-app="kaiju")
+  head
+    title= title
+    //-meta( name="viewport" content="width=device-width, initial-scale=1.0" )
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/javascripts/vendor/bootstrap-css/css/bootstrap.css')
+
+    script(type='text/javascript', src='/javascripts/vendor/angular/angular.js')
+    script(type='text/javascript', src='/javascripts/vendor/ng-file-upload/angular-file-upload.js')
+    script(type='text/javascript', src='/javascripts/vendor/jquery/jquery.js')
+    script(type='text/javascript', src='/javascripts/vendor/bootstrap-css/js/bootstrap.js')
+    script(type='text/javascript', src='/javascripts/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js')
+    script(type='text/javascript', src='/javascripts/app.js')
+    script(type='text/javascript', src='/javascripts/controllers.js')
+    script(type='text/javascript', src='/javascripts/directives.js')
+    script(type='text/javascript', src='/javascripts/filters.js')
+    script(type='text/javascript', src='/javascripts/services.js')
+
+    base(href="/")
+
+    block head
+
+  body
+    div(ng-view)
+      block content
